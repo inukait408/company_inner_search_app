@@ -101,7 +101,7 @@ with st.spinner(ct.SPINNER_TEXT):
         # 後続の処理を中断
         st.stop()
 
-        with st.chat_message("assistant"):
+with st.chat_message("assistant"):
 
     try:
 
