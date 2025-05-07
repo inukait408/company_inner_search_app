@@ -69,21 +69,18 @@ except Exception as e:
 
     # 後続の処理を中断
     st.stop()
+chat_message = st.chat_input(ct.CHAT_INPUT_HELPER_TEXT)
 
-    chat_message = st.chat_input(ct.CHAT_INPUT_HELPER_TEXT)
-
-    if chat_message:    
-    # 処理
-
+if chat_message:    
     # ユーザーメッセージのログ出力
-logger.info({"message": chat_message, "application_mode": st.session_state.mode})
+    logger.info({"message": chat_message, "application_mode": st.session_state.mode})
 
-# ユーザーメッセージを表示
-with st.chat_message("user"):
-    st.markdown(chat_message)
+    # ユーザーメッセージを表示
+    with st.chat_message("user"):
+        st.markdown(chat_message)
 
     # 「st.spinner」でグルグル回っている間、表示の不具合が発生しないよう空のエリアを表示
-res_box = st.empty()
+    res_box = st.empty()
 
 # LLMによる回答生成（回答生成が完了するまでグルグル回す）
 with st.spinner(ct.SPINNER_TEXT):
